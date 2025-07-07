@@ -36,106 +36,46 @@ def load_basics():
     with open(basics_file, 'r', encoding='utf-8') as f:
         return json.load(f)
 
-def load_work():
-    """Load all work experience files from src/resume/work/."""
+def load_section(section_name):
+    """Load all JSON files from a resume section directory."""
     repo_root = get_repo_root()
-    work_dir = repo_root / "src" / "resume" / "work"
+    section_dir = repo_root / "src" / "resume" / section_name
     
-    if not work_dir.exists():
+    if not section_dir.exists():
         return []
     
-    work_experiences = []
+    section_entries = []
     
-    # Get all JSON files in the work directory
-    for work_file in sorted(work_dir.glob("*.json")):
-        with open(work_file, 'r', encoding='utf-8') as f:
-            work_data = json.load(f)
-            work_experiences.append(work_data)
+    # Get all JSON files in the section directory
+    for section_file in sorted(section_dir.glob("*.json")):
+        with open(section_file, 'r', encoding='utf-8') as f:
+            section_data = json.load(f)
+            section_entries.append(section_data)
     
-    # Sort by start date (most recent first)
-    work_experiences.sort(key=lambda x: x.get('startDate', ''), reverse=True)
+    # Sort by appropriate date field (most recent first)
+    # Different sections use different date fields
+    date_field = "startDate"  # Default for work, education, volunteer
+    if section_name == "awards":
+        date_field = "date"
+    elif section_name == "publications":
+        date_field = "releaseDate"
+    elif section_name == "certificates":
+        date_field = "date"
     
-    return work_experiences
-
-def load_volunteer():
-    """Load all volunteer experience files from src/resume/volunteer/."""
-    repo_root = get_repo_root()
-    volunteer_dir = repo_root / "src" / "resume" / "volunteer"
+    section_entries.sort(key=lambda x: x.get(date_field, ''), reverse=True)
     
-    if not volunteer_dir.exists():
-        return []
-    
-    volunteer_experiences = []
-    
-    # Get all JSON files in the volunteer directory
-    for volunteer_file in sorted(volunteer_dir.glob("*.json")):
-        with open(volunteer_file, 'r', encoding='utf-8') as f:
-            volunteer_data = json.load(f)
-            volunteer_experiences.append(volunteer_data)
-    
-    # Sort by start date (most recent first)
-    volunteer_experiences.sort(key=lambda x: x.get('startDate', ''), reverse=True)
-    
-    return volunteer_experiences
-
-def load_education():
-    """Load all education files from src/resume/education/."""
-    repo_root = get_repo_root()
-    education_dir = repo_root / "src" / "resume" / "education"
-    
-    if not education_dir.exists():
-        return []
-    
-    education_entries = []
-    
-    # Get all JSON files in the education directory
-    for education_file in sorted(education_dir.glob("*.json")):
-        with open(education_file, 'r', encoding='utf-8') as f:
-            education_data = json.load(f)
-            education_entries.append(education_data)
-    
-    # Sort by start date (most recent first)
-    education_entries.sort(key=lambda x: x.get('startDate', ''), reverse=True)
-    
-    return education_entries
-
-def load_awards():
-    """Load all awards files from src/resume/awards/."""
-    repo_root = get_repo_root()
-    awards_dir = repo_root / "src" / "resume" / "awards"
-    
-    if not awards_dir.exists():
-        return []
-    
-    awards_entries = []
-    
-    # Get all JSON files in the awards directory
-    for awards_file in sorted(awards_dir.glob("*.json")):
-        with open(awards_file, 'r', encoding='utf-8') as f:
-            awards_data = json.load(f)
-            awards_entries.append(awards_data)
-    
-    # Sort by date (most recent first)
-    awards_entries.sort(key=lambda x: x.get('date', ''), reverse=True)
-    
-    return awards_entries
+    return section_entries
 
 def build_resume():
     """Build the complete resume JSON structure."""
     # Load basics section
     basics = load_basics()
     
-    # Load work experience sections
-    work = load_work()
-    
-    # Load volunteer experience sections
-    volunteer = load_volunteer()
-    
-    # Load education sections
-    education = load_education()
-    
-    # Load awards sections
-    awards = load_awards()
+    # Load other sections using the generic function
+    work = load_section("work")
+    volunteer = load_section("volunteer")
+    education = load_section("education")
+    awards = load_section("awards")
     
     # Create the JSONResume structure with proper schema reference
     resume = {
