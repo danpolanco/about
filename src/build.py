@@ -78,6 +78,27 @@ def load_volunteer():
     
     return volunteer_experiences
 
+def load_education():
+    """Load all education files from src/resume/education/."""
+    repo_root = get_repo_root()
+    education_dir = repo_root / "src" / "resume" / "education"
+    
+    if not education_dir.exists():
+        return []
+    
+    education_entries = []
+    
+    # Get all JSON files in the education directory
+    for education_file in sorted(education_dir.glob("*.json")):
+        with open(education_file, 'r', encoding='utf-8') as f:
+            education_data = json.load(f)
+            education_entries.append(education_data)
+    
+    # Sort by start date (most recent first)
+    education_entries.sort(key=lambda x: x.get('startDate', ''), reverse=True)
+    
+    return education_entries
+
 def build_resume():
     """Build the complete resume JSON structure."""
     # Load basics section
@@ -88,6 +109,9 @@ def build_resume():
     
     # Load volunteer experience sections
     volunteer = load_volunteer()
+    
+    # Load education sections
+    education = load_education()
     
     # Create the JSONResume structure with proper schema reference
     resume = {
@@ -100,6 +124,8 @@ def build_resume():
         resume["work"] = work
     if volunteer:
         resume["volunteer"] = volunteer
+    if education:
+        resume["education"] = education
     
     return resume
 
@@ -118,6 +144,8 @@ def main():
             sections.append("work")
         if resume.get("volunteer"):
             sections.append("volunteer")
+        if resume.get("education"):
+            sections.append("education")
         
         # Write to build/resume.json
         output_file = build_dir / "resume.json"
