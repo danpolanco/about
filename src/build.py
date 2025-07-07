@@ -36,15 +36,40 @@ def load_basics():
     with open(basics_file, 'r', encoding='utf-8') as f:
         return json.load(f)
 
+def load_work():
+    """Load all work experience files from src/resume/work/."""
+    repo_root = get_repo_root()
+    work_dir = repo_root / "src" / "resume" / "work"
+    
+    if not work_dir.exists():
+        return []
+    
+    work_experiences = []
+    
+    # Get all JSON files in the work directory
+    for work_file in sorted(work_dir.glob("*.json")):
+        with open(work_file, 'r', encoding='utf-8') as f:
+            work_data = json.load(f)
+            work_experiences.append(work_data)
+    
+    # Sort by start date (most recent first)
+    work_experiences.sort(key=lambda x: x.get('startDate', ''), reverse=True)
+    
+    return work_experiences
+
 def build_resume():
     """Build the complete resume JSON structure."""
     # Load basics section
     basics = load_basics()
     
+    # Load work experience sections
+    work = load_work()
+    
     # Create the JSONResume structure with proper schema reference
     resume = {
         "$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json",
-        "basics": basics
+        "basics": basics,
+        "work": work
     }
     
     return resume
@@ -65,7 +90,7 @@ def main():
             f.write('\n')  # Add trailing newline
         
         print(f"Resume built successfully: {output_file}")
-        print("Sections included: basics")
+        print("Sections included: basics, work")
         
     except Exception as e:
         print(f"Build failed: {e}")
