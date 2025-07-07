@@ -54,13 +54,16 @@ def load_section(section_name):
     
     # Sort by appropriate date field (most recent first)
     # Different sections use different date fields
-    date_field = "startDate"  # Default for work, education, volunteer
+    date_field = "startDate"  # Default for work, education, volunteer, projects
     if section_name == "awards":
         date_field = "date"
     elif section_name == "publications":
         date_field = "releaseDate"
     elif section_name == "certificates":
         date_field = "date"
+    elif section_name in ["skills", "languages", "interests", "references"]:
+        # These sections typically don't have dates, so keep original order
+        return section_entries
     
     section_entries.sort(key=lambda x: x.get(date_field, ''), reverse=True)
     
@@ -76,6 +79,13 @@ def build_resume():
     volunteer = load_section("volunteer")
     education = load_section("education")
     awards = load_section("awards")
+    certificates = load_section("certificates")
+    publications = load_section("publications")
+    skills = load_section("skills")
+    languages = load_section("languages")
+    interests = load_section("interests")
+    references = load_section("references")
+    projects = load_section("projects")
     
     # Create the JSONResume structure with proper schema reference
     resume = {
@@ -92,6 +102,20 @@ def build_resume():
         resume["education"] = education
     if awards:
         resume["awards"] = awards
+    if certificates:
+        resume["certificates"] = certificates
+    if publications:
+        resume["publications"] = publications
+    if skills:
+        resume["skills"] = skills
+    if languages:
+        resume["languages"] = languages
+    if interests:
+        resume["interests"] = interests
+    if references:
+        resume["references"] = references
+    if projects:
+        resume["projects"] = projects
     
     return resume
 
@@ -114,6 +138,20 @@ def main():
             sections.append("education")
         if resume.get("awards"):
             sections.append("awards")
+        if resume.get("certificates"):
+            sections.append("certificates")
+        if resume.get("publications"):
+            sections.append("publications")
+        if resume.get("skills"):
+            sections.append("skills")
+        if resume.get("languages"):
+            sections.append("languages")
+        if resume.get("interests"):
+            sections.append("interests")
+        if resume.get("references"):
+            sections.append("references")
+        if resume.get("projects"):
+            sections.append("projects")
         
         # Write to build/resume.json
         output_file = build_dir / "resume.json"
