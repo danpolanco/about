@@ -1,0 +1,11 @@
+{
+    "name": "Stantec",
+    "position": "Innovation Engineer",
+    "startDate": "2016-10-01",
+    "endDate": "2017-08-01",
+    "summary": "Worked as an Innovation Engineer at Stantec, a global engineering and design firm. Focused on developing innovative solutions for environmental and infrastructure projects.",
+    "highlights": [
+        "Created a holographic mobile app for HoloLens using Git, Visual Studio Team Services, and Agile methodology.",
+        "Built and deployed the app on Azure (Microsoft's cloud service) for Stantec with Practice Technology Director."
+    ]
+}

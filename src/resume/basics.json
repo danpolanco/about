@@ -1,0 +1,20 @@
+{
+    "name": "Daniel Polanco",
+    "label": "Bioinformatician | Cloud Engineer",
+    "image": "assets/images/profile.png",
+    "phone": "+1 (719) 422 3765",
+    "url": "https://daniel.polanco.me",
+    "summary": "Bioinformatician with over 10 years experience including in automating pipelines and deploying production-ready applications. Skilled in cloud engineering, workflow automation, and software development. Dedicated to mentoring and leading software development teams, with a passion for supporting clinical and public health research.",
+    "location": {
+        "city": "Denver",
+        "countryCode": "US",
+        "region": "Colorado"
+    },
+    "profiles": [
+        {
+            "network": "Linkedin",
+            "username": "danpolanco",
+            "url": "https://www.linkedin.com/in/danpolanco"
+        }
+    ]
+}

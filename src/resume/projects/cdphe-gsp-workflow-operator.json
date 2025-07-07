@@ -1,0 +1,19 @@
+{
+    "name": "CDPHE GSP Workflow Operator",
+    "startDate": "2024-04-30",
+    "endDate": "",
+    "description": "Automate the analysis of sequencing data using cloud-native workflows.",
+    "highlights": [
+        "Developed and maintained a cloud-native bioinformatics workflow operator using Python and Google Cloud Functions.",
+        "Designed and implemented robust REST API integrations with Google Cloud services, including Secret Manager, Storage, and Pub/Sub.",
+        "Automated deployment pipelines using GitHub Actions, including version bumping, code analysis (mypy, ruff), and CI/CD workflows.",
+        "Built modular, type-annotated Python code leveraging dataclasses, enums, and dependency injection for configuration management.",
+        "Implemented secure handling of secrets and environment variables for multi-environment (dev/prod) deployments.",
+        "Created reusable utility functions for dynamic dataset management, including creation, lookup, and upload to cloud platforms.",
+        "Integrated with Google Cloud Storage for automated retrieval and processing of large-scale sequencing data files.",
+        "Utilized pandas for efficient data manipulation and transformation within cloud functions.",
+        "Enabled local and remote testing and deployment with custom Bash scripts and VS Code task automation.",
+        "Documented development and deployment processes for team onboarding and operational transparency."
+    ],
+    "url": "https://github.com/CDPHE-bioinformatics/workflow-operator"
+}

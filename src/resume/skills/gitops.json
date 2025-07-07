@@ -1,0 +1,10 @@
+{
+    "name": "GitOps",
+    "level": "",
+    "keyowrds": [
+        "GitHub Actions",
+        "Continuous Deployment (CD)",
+        "Continuous Integration (CI)",
+        "Infrastructure as Code (IaC)"
+    ]
+}

@@ -1,0 +1,19 @@
+{
+    "name": "CDPHE GSP Inbox Handler",
+    "startDate": "2024-10-29",
+    "endDate": "",
+    "description": "Automate processing raw instrument data into a cloud storage inbox.",
+    "highlights": [
+        "Developed and maintained cloud-native Python functions for automated sequencing data processing using Google Cloud Functions and Pub/Sub.",
+        "Designed robust data ingestion pipelines for Illumina and Oxford Nanopore sequencing platforms, integrating with Google Cloud Storage and Firestore.",
+        "Implemented dynamic workbook discovery and download logic from Google Cloud Storage, supporting both project and run-level organization.",
+        "Built modular utilities for handling large-scale genomic data, including sample sheet creation, fastq file validation, renaming, and cloud uploads.",
+        "Integrated Google Cloud Tasks for scalable, asynchronous sample processing workflows.",
+        "Utilized environment-driven configuration management for seamless deployment across development and production environments.",
+        "Leveraged pandas for efficient parsing and manipulation of sequencing metadata and sample workbooks.",
+        "Implemented error handling and logging best practices to ensure traceability and reliability in cloud workflows.",
+        "Collaborated on a multi-platform codebase supporting both Illumina BaseSpace and ONT instrument data extraction and transformation.",
+        "Contributed to CI/CD and local testing workflows, including environment setup scripts and automated deployment pipelines."
+    ],
+    "url": "https://github.com/CDPHE-bioinformatics/inbox-handler"
+}
