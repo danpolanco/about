@@ -99,6 +99,27 @@ def load_education():
     
     return education_entries
 
+def load_awards():
+    """Load all awards files from src/resume/awards/."""
+    repo_root = get_repo_root()
+    awards_dir = repo_root / "src" / "resume" / "awards"
+    
+    if not awards_dir.exists():
+        return []
+    
+    awards_entries = []
+    
+    # Get all JSON files in the awards directory
+    for awards_file in sorted(awards_dir.glob("*.json")):
+        with open(awards_file, 'r', encoding='utf-8') as f:
+            awards_data = json.load(f)
+            awards_entries.append(awards_data)
+    
+    # Sort by date (most recent first)
+    awards_entries.sort(key=lambda x: x.get('date', ''), reverse=True)
+    
+    return awards_entries
+
 def build_resume():
     """Build the complete resume JSON structure."""
     # Load basics section
@@ -113,6 +134,9 @@ def build_resume():
     # Load education sections
     education = load_education()
     
+    # Load awards sections
+    awards = load_awards()
+    
     # Create the JSONResume structure with proper schema reference
     resume = {
         "$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json",
@@ -126,6 +150,8 @@ def build_resume():
         resume["volunteer"] = volunteer
     if education:
         resume["education"] = education
+    if awards:
+        resume["awards"] = awards
     
     return resume
 
@@ -146,6 +172,8 @@ def main():
             sections.append("volunteer")
         if resume.get("education"):
             sections.append("education")
+        if resume.get("awards"):
+            sections.append("awards")
         
         # Write to build/resume.json
         output_file = build_dir / "resume.json"
