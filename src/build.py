@@ -57,6 +57,27 @@ def load_work():
     
     return work_experiences
 
+def load_volunteer():
+    """Load all volunteer experience files from src/resume/volunteer/."""
+    repo_root = get_repo_root()
+    volunteer_dir = repo_root / "src" / "resume" / "volunteer"
+    
+    if not volunteer_dir.exists():
+        return []
+    
+    volunteer_experiences = []
+    
+    # Get all JSON files in the volunteer directory
+    for volunteer_file in sorted(volunteer_dir.glob("*.json")):
+        with open(volunteer_file, 'r', encoding='utf-8') as f:
+            volunteer_data = json.load(f)
+            volunteer_experiences.append(volunteer_data)
+    
+    # Sort by start date (most recent first)
+    volunteer_experiences.sort(key=lambda x: x.get('startDate', ''), reverse=True)
+    
+    return volunteer_experiences
+
 def build_resume():
     """Build the complete resume JSON structure."""
     # Load basics section
@@ -65,12 +86,20 @@ def build_resume():
     # Load work experience sections
     work = load_work()
     
+    # Load volunteer experience sections
+    volunteer = load_volunteer()
+    
     # Create the JSONResume structure with proper schema reference
     resume = {
         "$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json",
-        "basics": basics,
-        "work": work
+        "basics": basics
     }
+    
+    # Only include sections that have content
+    if work:
+        resume["work"] = work
+    if volunteer:
+        resume["volunteer"] = volunteer
     
     return resume
 
@@ -83,6 +112,13 @@ def main():
         # Build resume
         resume = build_resume()
         
+        # Determine which sections are included
+        sections = ["basics"]
+        if resume.get("work"):
+            sections.append("work")
+        if resume.get("volunteer"):
+            sections.append("volunteer")
+        
         # Write to build/resume.json
         output_file = build_dir / "resume.json"
         with open(output_file, 'w', encoding='utf-8') as f:
@@ -90,7 +126,7 @@ def main():
             f.write('\n')  # Add trailing newline
         
         print(f"Resume built successfully: {output_file}")
-        print("Sections included: basics, work")
+        print(f"Sections included: {', '.join(sections)}")
         
     except Exception as e:
         print(f"Build failed: {e}")
