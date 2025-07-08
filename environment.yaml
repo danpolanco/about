@@ -1,10 +1,8 @@
-name: danpolanco_resume
+name: danpolanco_about
 channels:
   - conda-forge
-  - defaults
 dependencies:
-  - nodejs=22.13.0
-  - pip=24.0
+  - pip=24.*
   - pip:
-    - -r requirements.txt
-  - python=3.11.9
+    - -r src/requirements.txt # app dependencies
+  - python=3.11.*
