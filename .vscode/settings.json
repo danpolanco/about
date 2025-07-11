@@ -16,5 +16,8 @@
     ".vscode/prompts": true
   },
   "chat.tools.autoApprove": true,
-  "python.defaultInterpreterPath": "~/miniforge3/envs/danpolanco_about/bin/python"
+  "python.defaultInterpreterPath": "~/miniforge3/envs/danpolanco_about/bin/python",
+  "python.terminal.activateEnvironment": true,
+  "python.terminal.activateEnvInCurrentTerminal": true,
+  "python.terminal.shellIntegration.enabled": true
 }
