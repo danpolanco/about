@@ -53,12 +53,14 @@ conda activate danpolanco_about
 ## 🚀 Automation
 
 GitHub Actions automatically:
+
 - Builds resume when source files change
 - Validates JSON structure
 - Publishes to GitHub Gist
 - Comments on PRs with preview info
 
 ### Workflow Triggers
+
 - Push to `main` branch
 - Pull requests modifying resume content
 - Changes to `src/resume/**` or `src/build.py`
@@ -75,6 +77,7 @@ GitHub Actions automatically:
 Current theme: **elegant**
 
 To change theme, edit `src/resume/basics.json`:
+
 ```json
 {
   "meta": {
