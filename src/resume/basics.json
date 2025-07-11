@@ -16,5 +16,8 @@
             "username": "danpolanco",
             "url": "https://www.linkedin.com/in/danpolanco"
         }
-    ]
+    ],
+    "meta": {
+        "theme": "elegant"
+    }
 }
