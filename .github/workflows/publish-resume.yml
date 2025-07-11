@@ -48,8 +48,16 @@ jobs:
         echo "Gist ID: ${{ secrets.GIST_ID }}"
         echo "File exists: $(ls -la build/resume.json)"
         
-    - name: Update Resume Gist
+    - name: Update Resume Gist (Alternative)
       if: github.ref == 'refs/heads/main'
+      env:
+        GITHUB_TOKEN: ${{ secrets.GIST_TOKEN }}
+      run: |
+        # Update gist using GitHub CLI
+        gh gist edit ${{ secrets.GIST_ID }} build/resume.json
+        
+    - name: Update Resume Gist (Primary)
+      if: github.ref == 'refs/heads/main' && false
       uses: exuanbo/actions-deploy-gist@v1
       with:
         token: ${{ secrets.GIST_TOKEN }}
