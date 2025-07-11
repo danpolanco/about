@@ -33,10 +33,16 @@ jobs:
         gist_id: ${{ secrets.GIST_ID }}
         file_path: build/resume.json
 
-    - name: Fallback - Test Gist API
+    - name: Manual Gist Update (Alternative)
       if: failure()
       run: |
-        echo "Testing gist API access..."
-        curl -H "Authorization: token ${{ secrets.GIST_TOKEN }}" \
-             -H "Accept: application/vnd.github.v3+json" \
-             https://api.github.com/gists/${{ secrets.GIST_ID }}
+        echo "Attempting manual gist update..."
+        
+        # Create the JSON payload for gist update
+        CONTENT=$(cat build/resume.json | jq -Rs .)
+        
+        curl -X PATCH \
+          -H "Authorization: token ${{ secrets.GIST_TOKEN }}" \
+          -H "Accept: application/vnd.github.v3+json" \
+          -d "{\"files\":{\"resume.json\":{\"content\":$CONTENT}}}" \
+          https://api.github.com/gists/${{ secrets.GIST_ID }}
