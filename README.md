@@ -56,8 +56,15 @@ GitHub Actions automatically:
 
 - Builds resume when source files change
 - Validates JSON structure
-- Publishes to GitHub Gist
+- Publishes to GitHub Gist using GitHub CLI
 - Comments on PRs with preview info
+
+### Required Secrets
+
+For the workflow to function, set these repository secrets:
+
+- `GIST_TOKEN`: Personal Access Token with `gist` scope
+- `GIST_ID`: Your gist ID (e.g., `e0092caaa6d853193d2a6f69125c13dd`)
 
 ### Workflow Triggers
 

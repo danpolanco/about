@@ -34,18 +34,11 @@ jobs:
     - name: Update Resume Gist
       if: github.ref == 'refs/heads/main'
       run: |
-        echo "Updating gist with manual API call..."
-        
-        # Create the JSON payload for gist update
-        CONTENT=$(cat build/resume.json | jq -Rs .)
-        
-        curl -X PATCH \
-          -H "Authorization: token ${{ secrets.GIST_TOKEN }}" \
-          -H "Accept: application/vnd.github.v3+json" \
-          -d "{\"files\":{\"resume.json\":{\"content\":$CONTENT}}}" \
-          https://api.github.com/gists/${{ secrets.GIST_ID }} \
-          && echo "✅ Gist updated successfully" \
-          || echo "❌ Gist update failed"
+        echo "Updating gist with GitHub CLI..."
+        gh gist edit ${{ secrets.GIST_ID }} build/resume.json
+        echo "✅ Gist updated successfully"
+      env:
+        GH_TOKEN: ${{ secrets.GIST_TOKEN }}
         
     - name: Comment on PR
       if: github.event_name == 'pull_request'
