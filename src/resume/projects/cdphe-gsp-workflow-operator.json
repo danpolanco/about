@@ -1,5 +1,5 @@
 {
-    "name": "CDPHE GSP Workflow Operator",
+    "name": "CDPHE GSP | Workflow Operator",
     "startDate": "2024-04-30",
     "description": "Automate the analysis of sequencing data using cloud-native workflows.",
     "highlights": [

@@ -1,5 +1,5 @@
 {
-    "name": "CDPHE GSP Inbox Handler",
+    "name": "CDPHE GSP | Inbox Handler",
     "startDate": "2024-10-29",
     "description": "Automate processing raw instrument data into a cloud storage inbox.",
     "highlights": [

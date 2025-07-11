@@ -1,5 +1,5 @@
 {
-    "name": "CDPHE GSP GCP Infrastructure",
+    "name": "CDPHE GSP | GCP Infrastructure",
     "startDate": "2025-02-10",
     "description": "Automates and manages Google Cloud infrastructure with Terraform modules including integrated cost estimation. (Private repository)",
     "highlights": [
