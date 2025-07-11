@@ -9,6 +9,8 @@
         "Perform quality control and variant interpretation using IGV, validating genomic data for clinical accuracy and GISAID repository submissions.",
         "Automate weekly variant proportion reporting to state epidemiologists for public health decision-making and outbreak response.",
         "Submit pathogen genomes to clinical repositories including Biosample, SRA, GenBank, and GISAID following quality assurance protocols.",
+        "Maintain compliance with PII/PHI protection standards and internal SOPs for clinical data handling and privacy protocols.",
+        "Collaborate directly with clinicians on research projects, including RSV genomic diversity analysis presented at APHL conference.",
         "Collaborate with CDC and APHL on multiple projects including AIMS Influenza Sequencing Center and IT Security and Privacy white papers.",
         "Design, implement, and automate BigQuery data extract, load and transformation for disease surveillance.",
         "Configure and build out Google Cloud infrastructure with enhanced security protocols for clinical data processing."
