@@ -5,10 +5,8 @@
     "endDate": "2022-11-01",
     "summary": "Worked as a software engineer for Jonah Ventures, a startup focused on developing innovative solutions for environmental genomics.",
     "highlights": [
-        "Develop sample and data workflows for DNA sequencing lab.",
-        "Utilize skills in R, R Markdown, R Shiny, AWS, SQL and/or related technologies.",
-        "Help develop a sample management system.",
-        "Develop scripts for automated assembly/annotation of genomic data.",
-        "Help develop web portal for data return to clients."
+        "Developed sample and data workflows for DNA sequencing lab.",
+        "Utilized skills in R, R Markdown, R Shiny, AWS, SQL and related technologies.",
+        "Helped develop a sample management system."
     ]
 }
