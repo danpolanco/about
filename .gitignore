@@ -333,6 +333,9 @@ tags
 
 ### VisualStudioCode ###
 .vscode/*
+!.vscode/prompts
+!.vscode/instructions
+!.vscode/chatmodes
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json
