@@ -1,82 +1,28 @@
-name: Publish Resume
+name: Update Resume Gist
 
-on:
-  push:
-    branches: [ main ]
-    paths: 
-      - 'src/resume/**'
-      - 'src/build.py'
-  pull_request:
-    branches: [ main ]
-    paths: 
-      - 'src/resume/**'
-      - 'src/build.py'
+on: push
 
 jobs:
-  build-and-publish:
+  update-resume-gist:
     runs-on: ubuntu-latest
     
     steps:
     - name: Checkout Repository
-      uses: actions/checkout@v4
-    
+      uses: actions/checkout@v3
+
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
         python-version: '3.11'
-    
+
     - name: Build Resume
       run: |
         cd src
         python build.py
-        
-    - name: Validate JSON Resume
-      run: |
-        # Validate JSON syntax
-        cat build/resume.json | jq empty
-        echo "✅ JSON Resume validation passed"
-        
-    - name: Show Resume Summary
-      run: |
-        echo "📄 Resume sections: $(jq -r 'keys | join(", ")' build/resume.json)"
-        echo "👤 Name: $(jq -r '.basics.name' build/resume.json)"
-        echo "🎯 Label: $(jq -r '.basics.label' build/resume.json)"
-        
-    - name: Debug Gist Info
-      if: github.ref == 'refs/heads/main'
-      run: |
-        echo "Gist ID: ${{ secrets.GIST_ID }}"
-        echo "File exists: $(ls -la build/resume.json)"
-        
-    - name: Update Resume Gist (Alternative)
-      if: github.ref == 'refs/heads/main'
-      env:
-        GITHUB_TOKEN: ${{ secrets.GIST_TOKEN }}
-      run: |
-        # Update gist using GitHub CLI
-        gh gist edit ${{ secrets.GIST_ID }} build/resume.json
-        
-    - name: Update Resume Gist (Primary)
-      if: github.ref == 'refs/heads/main' && false
+
+    - name: Update Resume Gist
       uses: exuanbo/actions-deploy-gist@v1
       with:
         token: ${{ secrets.GIST_TOKEN }}
         gist_id: ${{ secrets.GIST_ID }}
         file_path: build/resume.json
-        gist_file_name: resume.json
-        
-    - name: Comment on PR
-      if: github.event_name == 'pull_request'
-      uses: actions/github-script@v6
-      with:
-        script: |
-          const fs = require('fs');
-          const resume = JSON.parse(fs.readFileSync('build/resume.json', 'utf8'));
-          const sections = Object.keys(resume).filter(key => key !== '$schema');
-          
-          await github.rest.issues.createComment({
-            issue_number: context.issue.number,
-            owner: context.repo.owner,
-            repo: context.repo.repo,
-            body: `🎯 **Resume Preview Built Successfully!**\n\n📄 **Sections:** ${sections.join(', ')}\n\n🔗 **Preview:** This will be published to [registry.jsonresume.org/danpolanco](https://registry.jsonresume.org/danpolanco) when merged.`
-          });
