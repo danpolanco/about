@@ -19,24 +19,11 @@ jobs:
       run: |
         cd src
         python build.py
-
-    - name: Debug Info
-      run: |
-        echo "Built file exists: $(ls -la build/resume.json)"
-        echo "File size: $(wc -c < build/resume.json) bytes"
-        echo "First 100 chars: $(head -c 100 build/resume.json)"
+        echo "✅ Resume built successfully"
 
     - name: Update Resume Gist
-      uses: exuanbo/actions-deploy-gist@v1
-      with:
-        token: ${{ secrets.GIST_TOKEN }}
-        gist_id: ${{ secrets.GIST_ID }}
-        file_path: build/resume.json
-
-    - name: Manual Gist Update (Alternative)
-      if: failure()
       run: |
-        echo "Attempting manual gist update..."
+        echo "Updating gist with manual API call..."
         
         # Create the JSON payload for gist update
         CONTENT=$(cat build/resume.json | jq -Rs .)
@@ -45,4 +32,6 @@ jobs:
           -H "Authorization: token ${{ secrets.GIST_TOKEN }}" \
           -H "Accept: application/vnd.github.v3+json" \
           -d "{\"files\":{\"resume.json\":{\"content\":$CONTENT}}}" \
-          https://api.github.com/gists/${{ secrets.GIST_ID }}
+          https://api.github.com/gists/${{ secrets.GIST_ID }} \
+          && echo "✅ Gist updated successfully" \
+          || echo "❌ Gist update failed"
