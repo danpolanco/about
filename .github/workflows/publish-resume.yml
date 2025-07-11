@@ -20,9 +20,23 @@ jobs:
         cd src
         python build.py
 
+    - name: Debug Info
+      run: |
+        echo "Built file exists: $(ls -la build/resume.json)"
+        echo "File size: $(wc -c < build/resume.json) bytes"
+        echo "First 100 chars: $(head -c 100 build/resume.json)"
+
     - name: Update Resume Gist
       uses: exuanbo/actions-deploy-gist@v1
       with:
         token: ${{ secrets.GIST_TOKEN }}
         gist_id: ${{ secrets.GIST_ID }}
         file_path: build/resume.json
+
+    - name: Fallback - Test Gist API
+      if: failure()
+      run: |
+        echo "Testing gist API access..."
+        curl -H "Authorization: token ${{ secrets.GIST_TOKEN }}" \
+             -H "Accept: application/vnd.github.v3+json" \
+             https://api.github.com/gists/${{ secrets.GIST_ID }}
