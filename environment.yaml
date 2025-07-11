@@ -6,3 +6,4 @@ dependencies:
   - pip:
     - -r src/requirements.txt # app dependencies
   - python=3.11.*
+  - gh=2.75.*

@@ -32,6 +32,22 @@ python build.py
 
 # View built resume
 cat ../build/resume.json | jq .
+
+# Test build process
+./scripts/test-build.sh
+
+# Test gist setup (requires your token)
+./scripts/test-gist-setup.sh YOUR_GIST_TOKEN e0092caaa6d853193d2a6f69125c13dd
+```
+
+## 🛠️ Environment Setup
+
+```bash
+# Update conda environment with GitHub CLI
+conda env update -f environment.yaml
+
+# Activate environment
+conda activate danpolanco_about
 ```
 
 ## 🚀 Automation
