@@ -1,0 +1,20 @@
+{
+  "chat.instructionsFilesLocations": {
+    ".github/instructions": true,
+    ".personal/instructions": true,
+    ".vscode/instructions": true
+  },
+  "chat.modeFilesLocations": {
+    ".github/chatmodes": true,
+    ".personal/chatmodes": true,
+    ".vscode/chatmodes": true
+  },
+  "chat.promptFiles": true,
+  "chat.promptFilesLocations": {
+    ".github/prompts": true,
+    ".personal/prompts": true,
+    ".vscode/prompts": true
+  },
+  "chat.tools.autoApprove": true,
+  "python.defaultInterpreterPath": "~/miniforge3/envs/danpolanco_about/bin/python"
+}
