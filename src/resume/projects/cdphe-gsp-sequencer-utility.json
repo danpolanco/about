@@ -1,7 +1,6 @@
 {
     "name": "CDPHE GSP Sequencer Utility",
     "startDate": "2024-08-27",
-    "endDate": "",
     "description": "Automate sequencing instrument import into the cloud environment.",
     "highlights": [
         "Designed and implemented modular Terraform infrastructure for a GCP-based sequencing data pipeline, supporting creation, ingestion, preparation, and processing stages.",

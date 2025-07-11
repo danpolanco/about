@@ -1,7 +1,6 @@
 {
     "name": "CDPHE GSP Workflow Operator",
     "startDate": "2024-04-30",
-    "endDate": "",
     "description": "Automate the analysis of sequencing data using cloud-native workflows.",
     "highlights": [
         "Developed and maintained a cloud-native bioinformatics workflow operator using Python and Google Cloud Functions.",

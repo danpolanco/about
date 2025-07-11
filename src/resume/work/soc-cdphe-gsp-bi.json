@@ -2,7 +2,6 @@
     "name": "State of Colorado",
     "position": "Bioinformatician",
     "startDate": "2022-11-01",
-    "endDate": "",
     "summary": "Bioinformatician for the Colorado Department of Public Health and Environment (CDPHE) Genomics Surveillance Program (GSP). Focused on automating bioinformatics pipelines, deploying production-ready applications, and supporting clinical and bioinformatics research.",
     "highlights": [
         "Configure and build out Google Cloud infrastructure.",
