@@ -1,7 +1,7 @@
 {
     "name": "GitOps",
     "level": "",
-    "keyowrds": [
+    "keywords": [
         "GitHub Actions",
         "Continuous Deployment (CD)",
         "Continuous Integration (CI)",
