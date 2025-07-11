@@ -1,6 +1,16 @@
 name: Update Resume Gist
 
-on: push
+on:
+  push:
+    branches: [ main ]
+    paths: 
+      - 'src/resume/**'
+      - 'src/build.py'
+  pull_request:
+    branches: [ main ]
+    paths: 
+      - 'src/resume/**'
+      - 'src/build.py'
 
 jobs:
   update-resume-gist:
@@ -22,6 +32,7 @@ jobs:
         echo "✅ Resume built successfully"
 
     - name: Update Resume Gist
+      if: github.ref == 'refs/heads/main'
       run: |
         echo "Updating gist with manual API call..."
         
@@ -35,3 +46,19 @@ jobs:
           https://api.github.com/gists/${{ secrets.GIST_ID }} \
           && echo "✅ Gist updated successfully" \
           || echo "❌ Gist update failed"
+        
+    - name: Comment on PR
+      if: github.event_name == 'pull_request'
+      uses: actions/github-script@v6
+      with:
+        script: |
+          const fs = require('fs');
+          const resume = JSON.parse(fs.readFileSync('build/resume.json', 'utf8'));
+          const sections = Object.keys(resume).filter(key => key !== '$schema');
+          
+          await github.rest.issues.createComment({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            body: `🎯 **Resume Preview Built Successfully!**\n\n📄 **Sections:** ${sections.join(', ')}\n\n🔗 **Preview:** This will be published to [registry.jsonresume.org/danpolanco](https://registry.jsonresume.org/danpolanco) when merged.`
+          });
