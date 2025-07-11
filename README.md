@@ -81,14 +81,14 @@ For the workflow to function, set these repository secrets:
 
 ## 🎨 Theme
 
-Current theme: **elegant**
+Current theme: **macchiato**
 
 To change theme, edit `src/resume/basics.json`:
 
 ```json
 {
   "meta": {
-    "theme": "elegant"
+    "theme": "macchiato"
   }
 }
 ```
