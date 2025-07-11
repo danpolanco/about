@@ -2,10 +2,17 @@
     "name": "Bioinformatics",
     "level": "",
     "keywords": [
+        "Clinical Genomics",
         "Data Visualization",
+        "IGV",
         "Next-Generation Sequencing (NGS)",
+        "Phylogenetic Analysis",
         "Pipeline Development",
         "Python",
-        "R"
+        "Quality Control",
+        "R",
+        "Tableau",
+        "Variant Analysis",
+        "WDL Workflows"
     ]
 }
