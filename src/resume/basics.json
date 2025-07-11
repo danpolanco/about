@@ -1,6 +1,6 @@
 {
     "name": "Daniel Polanco",
-    "label": "Bioinformatician | Cloud Engineer",
+    "label": "Bioinformatician | Software Developer | Cloud Engineer",
     "email": "daniel@polanco.me",
     "phone": "+1 (719) 422 3765",
     "url": "https://daniel.polanco.me",
@@ -11,6 +11,11 @@
         "region": "Colorado"
     },
     "profiles": [
+        {
+            "network": "GitHub",
+            "username": "danpolanco",
+            "url": "https://github.com/danpolanco"
+        },
         {
             "network": "Linkedin",
             "username": "danpolanco",
