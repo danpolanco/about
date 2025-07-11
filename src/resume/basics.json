@@ -1,7 +1,7 @@
 {
     "name": "Daniel Polanco",
     "label": "Bioinformatician | Cloud Engineer",
-    "image": "assets/images/profile.png",
+    "image": "https://github.com/danpolanco/about/blob/main/assets/images/resume.png",
     "phone": "+1 (719) 422 3765",
     "url": "https://daniel.polanco.me",
     "summary": "Bioinformatician with over 10 years experience including in automating pipelines and deploying production-ready applications. Skilled in cloud engineering, workflow automation, and software development. Dedicated to mentoring and leading software development teams, with a passion for supporting clinical and public health research.",
