@@ -1,7 +1,7 @@
 {
     "name": "CDPHE GSP GCP Infrastructure",
     "startDate": "2025-02-10",
-    "description": "Automates and manages Google Cloud infrastructure with Terraform modules including integrated cost estimation.",
+    "description": "Automates and manages Google Cloud infrastructure with Terraform modules including integrated cost estimation. (Private repository)",
     "highlights": [
         "Designed and implemented modular Terraform infrastructure for a GCP-based sequencing data pipeline, supporting creation, ingestion, preparation, and processing stages.",
         "Developed secure, team-based access controls using IAM roles and Google Secret Manager for sensitive credentials and configuration.",

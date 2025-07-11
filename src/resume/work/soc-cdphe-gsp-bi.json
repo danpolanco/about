@@ -4,15 +4,15 @@
     "startDate": "2022-11-01",
     "summary": "Bioinformatician for the Colorado Department of Public Health and Environment (CDPHE) Genomics Surveillance Program (GSP). Focused on clinical pathogen sequencing, variant analysis, and automated epidemiological reporting for public health surveillance.",
     "highlights": [
-        "Process and analyze over 7,000 COVID-19 patient samples using clinical-grade WDL workflows for pathogen detection and variant calling.",
-        "Develop and implement RSV genomic surveillance workflow, analyzing 674 samples across three respiratory seasons for epidemiological tracking.",
+        "Process and analyze over 7,000 COVID-19 patient samples using WDL workflows for pathogen detection and variant calling.",
+        "Develop and implement RSV genomic surveillance workflow, analyzing 674 samples across three respiratory seasons for clinical insights.",
         "Perform quality control and variant interpretation using IGV, validating genomic data for clinical accuracy and GISAID repository submissions.",
-        "Automate weekly variant proportion reporting to state epidemiologists for public health decision-making and outbreak response.",
+        "Migrate weekly variant proportion reporting to cloud native solutions for public health decision-making and outbreak response.",
         "Submit pathogen genomes to clinical repositories including Biosample, SRA, GenBank, and GISAID following quality assurance protocols.",
         "Maintain compliance with PII/PHI protection standards and internal SOPs for clinical data handling and privacy protocols.",
         "Collaborate directly with clinicians on research projects, including RSV genomic diversity analysis presented at APHL conference.",
         "Collaborate with CDC and APHL on multiple projects including AIMS Influenza Sequencing Center and IT Security and Privacy white papers.",
-        "Design, implement, and automate BigQuery data extract, load and transformation for disease surveillance.",
-        "Configure and build out Google Cloud infrastructure with enhanced security protocols for clinical data processing."
+        "Design, implement, and automate BigQuery data extract, load and transformation for disease surveillance using Dataform for reproducibility and stability.",
+        "Configure and build out Google Cloud infrastructure with enhanced security protocols for clinical and wastewater data processing."
     ]
 }
