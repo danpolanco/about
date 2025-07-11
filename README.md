@@ -10,7 +10,7 @@ Automated resume built with JSON Resume and GitHub Actions.
 
 ## 🏗️ Structure
 
-```
+```text
 src/resume/
 ├── basics.json          # Personal info, contact, summary
 ├── work/                # Work experience (one file per job)
