@@ -42,6 +42,12 @@ jobs:
         echo "👤 Name: $(jq -r '.basics.name' build/resume.json)"
         echo "🎯 Label: $(jq -r '.basics.label' build/resume.json)"
         
+    - name: Debug Gist Info
+      if: github.ref == 'refs/heads/main'
+      run: |
+        echo "Gist ID: ${{ secrets.GIST_ID }}"
+        echo "File exists: $(ls -la build/resume.json)"
+        
     - name: Update Resume Gist
       if: github.ref == 'refs/heads/main'
       uses: exuanbo/actions-deploy-gist@v1
@@ -49,7 +55,7 @@ jobs:
         token: ${{ secrets.GIST_TOKEN }}
         gist_id: ${{ secrets.GIST_ID }}
         file_path: build/resume.json
-        file_name: resume.json
+        gist_file_name: resume.json
         
     - name: Comment on PR
       if: github.event_name == 'pull_request'
